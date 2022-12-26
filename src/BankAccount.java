@@ -1,10 +1,12 @@
+import java.io.IOException;
+
 public class BankAccount {
     private double balance;
 
-    public void deposit(double amount) {
+    public void deposit(double amount) throws IOException {
         // Defensive programming
         if(amount <= 0 ){
-            throw new IllegalArgumentException(); // lancer une nouvelle exception
+            throw new IOException(); // lancer une nouvelle exception
         }
         this.balance += amount;
     }
