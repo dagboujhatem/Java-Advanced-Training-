@@ -8,7 +8,7 @@ public class Main {
         StringBuffer donnees = new StringBuffer();
         
         try{
-            fileReader = new FileReader("file.txft");
+            fileReader = new FileReader("file.txt");
             System.out.println("File Opened Successfully.");
             char[] buffer = new char[2048];
             int len;
