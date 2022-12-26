@@ -1,6 +1,8 @@
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 
 public class Main {
     public static void main(String[] args) {
@@ -15,11 +17,14 @@ public class Main {
             while ((len = fileReader.read(buffer)) > 0) {
                 donnees.append(buffer, 0, len);
             }
-        } catch(FileNotFoundException e){
-            System.out.println("Le fichier est introuvable.");
-            e.printStackTrace();
-        } catch (IOException e) {
-            System.out.println("Impossible de lire le fichier.");
+            // Date parsing
+            new SimpleDateFormat().parse("");
+
+
+        } catch(IOException | ParseException e){
+            // si vous avez une exception de type IOException ou bien une exception qui hérite de la classe IOException
+            // ou bien si vous avez, une exception de la classe ParseException ou bien une exception qui hérite de la classe ParseException
+            // on fait ce block là
             e.printStackTrace();
         }
         finally {
