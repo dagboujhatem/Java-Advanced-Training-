@@ -8,7 +8,7 @@ public class Main {
         StringBuffer donnees = new StringBuffer();
         
         try{
-            fileReader = new FileReader("file.txt");
+            fileReader = new FileReader("file.txft");
             System.out.println("File Opened Successfully.");
             char[] buffer = new char[2048];
             int len;
@@ -16,13 +16,19 @@ public class Main {
                 donnees.append(buffer, 0, len);
             }
         } catch(FileNotFoundException e){
+            System.out.println("Le fichier est introuvable.");
             e.printStackTrace();
         } catch (IOException e) {
+            System.out.println("Impossible de lire le fichier.");
             e.printStackTrace();
         }
         finally {
-            if(fileReader != null ){
-                fileReader.close();
+            try{
+                if(fileReader != null ){
+                    fileReader.close();
+                }
+            }catch(IOException e){
+                e.printStackTrace();
             }
 
         }
