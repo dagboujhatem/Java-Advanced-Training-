@@ -3,37 +3,42 @@ import java.util.List;
 
 public class Main {
     public static void main(String[] args) {
-        // construction a Set based on an list (to take only distinct elements)
-        List<Integer> myList = Arrays.asList(3,5,6,5,6,1);
-        Set<Integer> mySet = new HashSet<>(myList);
-        // construction a Set based on add metod
-        HashSet<Integer> set = new HashSet<>();
-        set.add(5);
-        set.add(5);
-        set.add(15);
-        set.add(15);
+        // les Map dans Java
+        BankAccount a1 = new BankAccount(30, "holder1", "email1");
+        BankAccount a2 = new BankAccount(350, "holder2", "email2");
+        BankAccount a3 = new BankAccount(300, "holder3", "email3");
 
-        // show a set
-        for (Integer item: set) {
-            System.out.println(item);
+        Map<String, BankAccount> bankAccountMap = new HashMap<>();
+        bankAccountMap.put(a1.getEmail(), a1); // put object to map
+        bankAccountMap.put(a2.getEmail(), a2);
+        bankAccountMap.put(a3.getEmail(), a3);
+
+        BankAccount myBankAccount = bankAccountMap.get("email1"); // get the value of given key or null if key is not in the map
+        BankAccount account = bankAccountMap.getOrDefault("email20", new BankAccount(6));
+        System.out.println(myBankAccount);
+        System.out.println(account);
+
+        // contains key to verify if the key is existing in the map
+        boolean exist = bankAccountMap.containsKey("email1");
+        System.out.println(exist);
+
+        // replace the value of the given key
+        bankAccountMap.replace("email1", new BankAccount(50));
+        System.out.println(bankAccountMap);
+
+        // iteration of keys
+        for (String key:bankAccountMap.keySet()) {
+            System.out.println(key);
+        }
+        // iteration of values
+        for (BankAccount value:bankAccountMap.values()) {
+            System.out.println(value);
+        }
+        // iteration with EntrySet (to iterate keys & values)
+        for (var entry:bankAccountMap.entrySet()) {
+            System.out.println(entry.getKey());
+            System.out.println(entry.getValue());
         }
 
-        // Union with distinct criteria (i.e faire la fusion en gardant que les éléments disticts)
-        Set<Integer> set1 = new HashSet<>(Arrays.asList(1,2,3,4));
-        Set<Integer> set2 = new HashSet<>(Arrays.asList(3,4,5,6));
-        set1.addAll(set2);
-        System.out.println(set1);
-
-        // Intersection in two sets (i.e garder que les element qui sont dans les deux sets)
-        Set<Integer> set3 = new HashSet<>(Arrays.asList(1,2,3,7));
-        Set<Integer> set4 = new HashSet<>(Arrays.asList(3,4,5,7));
-        set3.retainAll(set4);
-        System.out.println(set3);
-
-        // Differance in two sets (i.e garder que les element qui ne sont pas dans les deux sets)
-        Set<Integer> set5 = new HashSet<>(Arrays.asList(1,2,3,7));
-        Set<Integer> set6 = new HashSet<>(Arrays.asList(3,4,5,7));
-        set5.removeAll(set6);
-        System.out.println(set5);
     }
 }
