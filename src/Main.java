@@ -3,34 +3,37 @@ import java.util.List;
 
 public class Main {
     public static void main(String[] args) {
-        List<Integer> list = new ArrayList<>();
-        list.add(5);
-        list.add(5);
-        list.add(15);
-        list.add(15);
-        // add in an specific index
-        list.add(0, 10); // insertion en index=0 et décalage des items à droite
+        // construction a Set based on an list (to take only distinct elements)
+        List<Integer> myList = Arrays.asList(3,5,6,5,6,1);
+        Set<Integer> mySet = new HashSet<>(myList);
+        // construction a Set based on add metod
+        HashSet<Integer> set = new HashSet<>();
+        set.add(5);
+        set.add(5);
+        set.add(15);
+        set.add(15);
 
-        // remove based on the index of elements
-        list.remove(2);
-
-        // index of
-        int firstIndex = list.indexOf(15); // return -1 dans le cas ou 15 n'existe pas dans list
-        System.out.println("La dernière index de l'element 15 est: " + firstIndex);
-
-        // last index of
-        int lastIndex = list.lastIndexOf(15); // return -1 dans le cas ou 15 n'existe pas dans list
-        System.out.println("La dernière index de l'element 15 est: " + lastIndex);
-
-        // direct access to this list
-        System.out.println("The first elmeent is : " + list.get(0));
-
-        // create a sub list
-        List<Integer> subList = list.subList(0, 2);
-
-        // show list
-        for (Integer item: list) {
+        // show a set
+        for (Integer item: set) {
             System.out.println(item);
         }
+
+        // Union with distinct criteria (i.e faire la fusion en gardant que les éléments disticts)
+        Set<Integer> set1 = new HashSet<>(Arrays.asList(1,2,3,4));
+        Set<Integer> set2 = new HashSet<>(Arrays.asList(3,4,5,6));
+        set1.addAll(set2);
+        System.out.println(set1);
+
+        // Intersection in two sets (i.e garder que les element qui sont dans les deux sets)
+        Set<Integer> set3 = new HashSet<>(Arrays.asList(1,2,3,7));
+        Set<Integer> set4 = new HashSet<>(Arrays.asList(3,4,5,7));
+        set3.retainAll(set4);
+        System.out.println(set3);
+
+        // Differance in two sets (i.e garder que les element qui ne sont pas dans les deux sets)
+        Set<Integer> set5 = new HashSet<>(Arrays.asList(1,2,3,7));
+        Set<Integer> set6 = new HashSet<>(Arrays.asList(3,4,5,7));
+        set5.removeAll(set6);
+        System.out.println(set5);
     }
 }
