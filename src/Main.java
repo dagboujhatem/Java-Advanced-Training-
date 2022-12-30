@@ -1,40 +1,34 @@
 import java.util.*;
+import java.util.List;
 
 public class Main {
     public static void main(String[] args) {
-        Collection<Integer> list = new ArrayList<>();
+        List<Integer> list = new ArrayList<>();
+        list.add(5);
         list.add(5);
         list.add(15);
         list.add(15);
+        // add in an specific index
+        list.add(0, 10); // insertion en index=0 et décalage des items à droite
 
+        // remove based on the index of elements
+        list.remove(2);
 
-        // add all in collection
-        Collections.addAll(list, 1, 4, 5);
-        // size
-        System.out.println("La taille de la collection est :" + list.size());
-        // delete from collection
-        list.remove(4);
-        // clear a list (delete all element)
-        // list.clear();
-        // verify is an empty list
-        System.out.println("La liste est vide ? " + list.isEmpty());
-        // contains
-        var result = list.contains(3);
-        System.out.println("La liste contient 3 ? " + result);
-        // casting to Array of Object
-        Object[] object = list.toArray();
-        // casting to array of Integer
-        Integer[] integers = list.toArray(new Integer[5]); // 5 is the length
+        // index of
+        int firstIndex = list.lastIndexOf(15); // return -1 dans le cas ou 15 n'existe pas dans list
+        System.out.println("La dernière index de l'element 15 est: " + firstIndex);
 
-        // add all in other collection
-        Collection<Integer> others = new ArrayList<>();
-        others.addAll(list);
+        // last index of
+        int lastIndex = list.lastIndexOf(15); // return -1 dans le cas ou 15 n'existe pas dans list
+        System.out.println("La dernière index de l'element 15 est: " + lastIndex);
 
-        // comparing collection
-        System.out.println(others == list); // false : based on memory address
-        System.out.println(others.equals(list)); // true : based on content
+        // direct access to this list
+        System.out.println("The first elmeent is : " + list.get(0));
 
-        // show collection
+        // create a sub list
+        List<Integer> subList = list.subList(0, 2);
+
+        // show list
         for (Integer item: list) {
             System.out.println(item);
         }
