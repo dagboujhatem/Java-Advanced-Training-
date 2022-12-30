@@ -1,5 +1,5 @@
-public class GenericList<T> {
-    private T[] items = (T[]) new Object[5];
+public class GenericList<T extends Comparable & Cloneable> {
+    private T[] items = (T[]) new Comparable[5];
     private int count;
 
     public void add(T item) {
