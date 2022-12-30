@@ -1,11 +1,20 @@
+import java.util.Iterator;
+
 public class Main {
     public static void main(String[] args) {
-        System.out.println(Utils.min(8,9));
-        System.out.println(Utils.min(8.6D,9.0D));
-        System.out.println(Utils.min(8.65F,3.02F));
+        GenericList<Integer> list = new GenericList<>();
+        list.add(5);
+        list.add(15);
+        // 1st way to parcourir une liste
+        Iterator<Integer> iterator = list.iterator();
+        while (iterator.hasNext()){
+            System.out.println(iterator.next());
+        }
 
-        // multiple type in the generic method
-        Utils.printKeyValue(4, "Hatem");
-        Utils.printKeyValue(2F, 5);
+
+        // énd way to parcourir une liste
+        for (Integer item: list) {
+            System.out.println(item);
+        }
     }
 }
