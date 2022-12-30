@@ -15,7 +15,7 @@ public class Main {
         list.remove(2);
 
         // index of
-        int firstIndex = list.lastIndexOf(15); // return -1 dans le cas ou 15 n'existe pas dans list
+        int firstIndex = list.indexOf(15); // return -1 dans le cas ou 15 n'existe pas dans list
         System.out.println("La dernière index de l'element 15 est: " + firstIndex);
 
         // last index of
